@@ -37,15 +37,18 @@ Built as part of an **HCI capstone** (Fall 2021), the system explores interactio
 
 ## 🧩 System Architecture
 
-```mermaid
-flowchart LR
-    Camera[Webcam] --> Pre[Frame Preprocessing]
-    Pre --> Tracker[Hand & Landmark Tracking]
-    Tracker --> Gestures[Gesture Recognition]
-    Gestures --> UI[UI Controller]
-    UI --> Flow[Metro Booking Flow\n(From → To → Ticket Type → Payment)]
-    Flow --> Confirm[Ticket Confirmation]
-```
+flowchart TD
+%% Metro Booking Flow
+A[Start] --> B[Select Line]
+B --> C[Select From Station]
+C --> D[Select To Station]
+D --> E[Select Tickets]
+E --> F{Confirm?}
+F -- Yes --> G[Book Ticket]
+F -- No --> H[Cancel / Back]
+G --> I[Receipt / Done]
+H --> B
+
 
 * **Hand Tracking**: Detect hand/keypoints per frame
 * **Gesture Recognition**: Classify pose/transitions (e.g., two‑finger click)
@@ -114,26 +117,6 @@ python main.py
 
 ---
 
-## 🗂️ Suggested Repository Layout
-
-```
-Hand-Gesture-based-Metro-Booking-System/
-├─ src/
-│  ├─ tracker/           # hand detection & landmarks
-│  ├─ gestures/          # gesture classification
-│  ├─ ui/                # screens & cursor controller
-│  └─ main.py            # entrypoint
-├─ assets/               # icons, screenshots, demo gifs
-├─ docs/
-│  └─ report.pdf         # HCI study (this repo’s report)
-├─ requirements.txt
-└─ README.md
-```
-
-> If the current code uses different paths, adjust the layout section after pushing this README.
-
----
-
 ## ✅ Testing Checklist
 
 * [ ] Cursor tracks fingertip smoothly (no jitter)
@@ -162,15 +145,6 @@ Hand-Gesture-based-Metro-Booking-System/
 
 ---
 
-## 📸 Screenshots
-
-Add captures to `assets/` and reference them here:
-
-| Home                 | Station Select           | Payment                 |
-| -------------------- | ------------------------ | ----------------------- |
-| ![](assets/home.png) | ![](assets/stations.png) | ![](assets/payment.png) |
-
----
 
 ## 📄 License
 
