@@ -37,6 +37,7 @@ Built as part of an **HCI capstone** (Fall 2021), the system explores interactio
 
 ## 🧩 System Architecture
 
+```mermaid
 flowchart TD
 %% Metro Booking Flow
 A[Start] --> B[Select Line]
@@ -48,7 +49,7 @@ F -- Yes --> G[Book Ticket]
 F -- No --> H[Cancel / Back]
 G --> I[Receipt / Done]
 H --> B
-
+```
 
 * **Hand Tracking**: Detect hand/keypoints per frame
 * **Gesture Recognition**: Classify pose/transitions (e.g., two‑finger click)
